@@ -12,26 +12,14 @@
 //Horizontal speed and vertical speed while falling down
 #define PLAYER_SPEED			2
 
-//Vertical speed while on a ladder
-#define PLAYER_LADDER_SPEED		1
 
 //Frame animation delay while on a ladder
 #define ANIM_LADDER_DELAY		(2*ANIM_DELAY)
 
-//When jumping, initial jump speed and maximum falling speed
-#define PLAYER_JUMP_FORCE		10
 
-//Frame delay for updating the jump velocity
-#define PLAYER_JUMP_DELAY		2
-
-//Player is levitating when abs(speed) <= this value
-#define PLAYER_LEVITATING_SPEED	4
-
-//Gravity affects jumping velocity when jump_delay is 0
-#define GRAVITY_FORCE			1
 
 //Logic states
-enum class State { IDLE, WALKING, JUMPING, FALLING, CLIMBING, DEAD };
+enum class State { IDLE, WALKING, DEAD, SCATTER, CHASE, FRIGHTENED };
 enum class Look { RIGHT, LEFT, UP, DOWN };
 
 //Rendering states
