@@ -6,8 +6,11 @@
 
 #define POINTS_APPLE	10
 #define POINTS_CHILI	20
+#define POINTS_SMALL_DOT		10
+#define POINTS_ENERGIZER		50
+#define POINTS_GHOST			i*200 //no se como ponerlo
 
-enum class ObjectType { APPLE, CHILI };
+enum class ObjectType { APPLE, CHILI, SMALL_DOT, ENERGIZER, GHOST };
 
 class Object : public Entity
 {

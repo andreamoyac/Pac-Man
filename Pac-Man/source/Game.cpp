@@ -60,7 +60,7 @@ AppStatus Game::LoadResources()
 {
     ResourceManager& data = ResourceManager::Instance();
     
-    if (data.LoadTexture(Resource::IMG_MENU, "images/menu.png") != AppStatus::OK)
+    if (data.LoadTexture(Resource::IMG_MENU, "images/MAINMENU.png") != AppStatus::OK)
     {
         return AppStatus::ERROR;
     }
@@ -99,7 +99,7 @@ AppStatus Game::Update()
     {
         case GameState::MAIN_MENU: 
             if (IsKeyPressed(KEY_ESCAPE)) return AppStatus::QUIT;
-            if (IsKeyPressed(KEY_SPACE))
+            if (IsKeyPressed(KEY_ENTER))
             {
                 if(BeginPlay() != AppStatus::OK) return AppStatus::ERROR;
                 state = GameState::PLAYING;
