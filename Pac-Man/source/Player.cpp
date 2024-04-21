@@ -54,10 +54,10 @@ AppStatus Player::Initialise()
 		sprite->AddKeyFrame((int)PlayerAnim::WALKING_LEFT, { (float)i*n, 4*n, -n, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::WALKING_UP, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)PlayerAnim::WALKING_UP, { (float)i * n, 4 * n, -n, n });
+		sprite->AddKeyFrame((int)PlayerAnim::WALKING_UP, { (float)i * n, 4 * n, n, n });
 	sprite->SetAnimationDelay((int)PlayerAnim::WALKING_DOWN, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)PlayerAnim::WALKING_DOWN, { (float)i * n, 4 * n, -n, n });
+		sprite->AddKeyFrame((int)PlayerAnim::WALKING_DOWN, { (float)i * n, 4 * n, -n, -n });
 
 	
 
@@ -66,8 +66,7 @@ AppStatus Player::Initialise()
 	for (i = 0; i < 4; ++i)
 		sprite->AddKeyFrame((int)PlayerAnim::DEATH, { (float)i * n, 6 * n, n, n });
 
-		
-	sprite->SetAnimation((int)PlayerAnim::IDLE_RIGHT);
+	
 
 	return AppStatus::OK;
 }
@@ -103,14 +102,7 @@ bool Player::IsLookingDown() const
 {
 	return look == Look::DOWN;
 }
-bool Player::IsInFirstHalfTile() const
-{
-	return pos.y % TILE_SIZE < TILE_SIZE / 2;
-}
-bool Player::IsInSecondHalfTile() const
-{
-	return pos.y % TILE_SIZE >= TILE_SIZE/2;
-}
+
 void Player::SetAnimation(int id)
 {
 	Sprite* sprite = dynamic_cast<Sprite*>(render);
@@ -126,7 +118,9 @@ void Player::Stop()
 	dir = { 0,0 };
 	state = State::IDLE;
 	if (IsLookingRight())	SetAnimation((int)PlayerAnim::IDLE_RIGHT);
-	else					SetAnimation((int)PlayerAnim::IDLE_LEFT);
+	else if(IsLookingLeft()) SetAnimation((int)PlayerAnim::IDLE_LEFT);
+	else if (IsLookingDown()) SetAnimation((int)PlayerAnim::IDLE_DOWN);
+	else if (IsLookingUp()) SetAnimation((int)PlayerAnim::IDLE_UP);
 }
 void Player::StartWalkingLeft()
 {
@@ -211,7 +205,7 @@ void Player::MoveX()
 	int prev_x = pos.x;
 
 
-	if (IsKeyDown(KEY_LEFT) && !IsKeyDown(KEY_RIGHT))
+	if (IsKeyDown(KEY_LEFT))
 	{
 		pos.x += -PLAYER_SPEED;
 		if (state == State::IDLE) StartWalkingLeft();
@@ -254,9 +248,9 @@ void Player::MoveY()
 	int prev_y = pos.y;
 
 
-	if (IsKeyDown(KEY_UP) && !IsKeyDown(KEY_DOWN))
+	if (IsKeyDown(KEY_UP))
 	{
-		pos.y += PLAYER_SPEED;
+		pos.y += -PLAYER_SPEED;
 		if (state == State::IDLE) StartWalkingUp();
 		else
 		{
@@ -264,7 +258,7 @@ void Player::MoveY()
 		}
 
 		box = GetHitbox();
-		if (map->TestCollisionWallLeft(box))
+		if (map->TestCollisionWallUp(box))
 		{
 			pos.y = prev_y;
 			if (state == State::WALKING) Stop();
@@ -272,7 +266,7 @@ void Player::MoveY()
 	}
 	else if (IsKeyDown(KEY_DOWN))
 	{
-		pos.x += -PLAYER_SPEED;
+		pos.y += PLAYER_SPEED;
 		if (state == State::IDLE) StartWalkingDown();
 		else
 		{
@@ -280,7 +274,7 @@ void Player::MoveY()
 		}
 
 		box = GetHitbox();
-		if (map->TestCollisionWallRight(box))
+		if (map->TestCollisionWallDown(box))
 		{
 			pos.y = prev_y;
 			if (state == State::WALKING) Stop();

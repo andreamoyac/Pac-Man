@@ -60,6 +60,9 @@
     <ClCompile Include="source\StaticImage.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="source\Enemy.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Globals.h">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="source\StaticImage.h">
       <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemy.h">
+      <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

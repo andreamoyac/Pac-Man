@@ -28,6 +28,10 @@ private:
     void RenderGUI() const;
 
     Player *player;
+    /*Entity* pink;
+    Entity* blue;
+    Entity* red;
+    Entity* orange;*/
     TileMap *level;
     std::vector<Object*> objects;
 

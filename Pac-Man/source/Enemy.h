@@ -3,46 +3,40 @@
 #include "TileMap.h"
 
 //Representation model size: 32x32
-#define PLAYER_FRAME_SIZE		16
+#define ENEMY_FRAME_SIZE		16
 
 //Logical model size: 12x28
-#define PLAYER_PHYSICAL_WIDTH	12
-#define PLAYER_PHYSICAL_HEIGHT	28
+#define ENEMY_PHYSICAL_WIDTH	12
+#define ENEMY_PHYSICAL_HEIGHT	28
 
 //Horizontal speed and vertical speed while falling down
-#define PLAYER_SPEED			2
+#define ENEMY_SPEED			2
 
 
-//Frame animation delay while on a ladder
-#define ANIM_LADDER_DELAY		(2*ANIM_DELAY)
 
 
 
 //Logic states
-enum class State { IDLE, WALKING, DEAD, SCATTER, CHASE, FRIGHTENED };
+enum class State {SCATTER, CHASE, FRIGHTENED };
 enum class Look { RIGHT, LEFT, UP, DOWN };
 
 //Rendering states
-enum class PlayerAnim {
-	IDLE_LEFT, IDLE_RIGHT, IDLE_UP, IDLE_DOWN,
+enum class EnemyAnim {
+	EYES_LEFT, EYES_RIGHT, EYES_UP, EYES_DOWN,
 	WALKING_LEFT, WALKING_RIGHT, WALKING_UP, WALKING_DOWN,
-	DEATH,
-	TELEPORT_LEFT, TELEPORT_RIGHT,
+	BLUE_LEFT, BLUE_RIGHT, BLUE_UP, BLUE_DOWN,
 	NUM_ANIMATIONS
 };
 
-class Player: public Entity
+class Enemy : public Entity
 {
 public:
-	Player(const Point& p, State s, Look view);
-	~Player();
-	
+	Enemy(const Point& p, State s, Look view);
+	~Enemy();
+
 	AppStatus Initialise();
 	void SetTileMap(TileMap* tilemap);
 
-	void InitScore();
-	void IncrScore(int n);
-	int GetScore();
 
 	void Update();
 	void DrawDebug(const Color& col) const;
@@ -54,13 +48,15 @@ private:
 	bool IsLookingUp() const;
 	bool IsLookingDown() const;
 
-	//Player movement
+	//Player mechanics
 	void MoveX();
 	void MoveY();
+	void LogicJumping(); //creo q quitar
+	void LogicClimbing();
 
-	//Animations
+	//Animation management
 	void SetAnimation(int id);
-	PlayerAnim GetAnimation();
+	EnemyAnim GetAnimation();
 	void Stop();
 	void StartWalkingLeft();
 	void StartWalkingRight();
@@ -76,8 +72,7 @@ private:
 	State state;
 	Look look;
 
-	TileMap *map;
+	TileMap* map;
 
-	int score;
 };
 

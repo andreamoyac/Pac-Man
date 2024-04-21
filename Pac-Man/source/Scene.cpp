@@ -49,6 +49,54 @@ AppStatus Scene::Init()
 		LOG("Failed to initialise Player");
 		return AppStatus::ERROR;
 	}
+	//pink = new Entity({ 0,0 }, State::IDLE, Look::UP);
+	//if (player == nullptr)
+	//{
+	//	LOG("Failed to allocate memory for Player");
+	//	return AppStatus::ERROR;
+	//}
+	////Initialise player
+	//if (player->Initialise() != AppStatus::OK)
+	//{
+	//	LOG("Failed to initialise Player");
+	//	return AppStatus::ERROR;
+	//}
+	//player = new Player({ 0,0 }, State::IDLE, Look::UP);
+	//if (player == nullptr)
+	//{
+	//	LOG("Failed to allocate memory for Player");
+	//	return AppStatus::ERROR;
+	//}
+	////Initialise player
+	//if (player->Initialise() != AppStatus::OK)
+	//{
+	//	LOG("Failed to initialise Player");
+	//	return AppStatus::ERROR;
+	//}
+	//player = new Player({ 0,0 }, State::IDLE, Look::UP);
+	//if (player == nullptr)
+	//{
+	//	LOG("Failed to allocate memory for Player");
+	//	return AppStatus::ERROR;
+	//}
+	////Initialise player
+	//if (player->Initialise() != AppStatus::OK)
+	//{
+	//	LOG("Failed to initialise Player");
+	//	return AppStatus::ERROR;
+	//}
+	//player = new Player({ 0,0 }, State::IDLE, Look::UP);
+	//if (player == nullptr)
+	//{
+	//	LOG("Failed to allocate memory for Player");
+	//	return AppStatus::ERROR;
+	//}
+	////Initialise player
+	//if (player->Initialise() != AppStatus::OK)
+	//{
+	//	LOG("Failed to initialise Player");
+	//	return AppStatus::ERROR;
+	//}
 
 	//Create level 
     level = new TileMap();
@@ -208,8 +256,8 @@ void Scene::Update()
 	if (IsKeyPressed(KEY_F1))
 	{
 		debug = (DebugMode)(((int)debug + 1) % (int)DebugMode::SIZE);
+
 	}
-	//Debug levels instantly
 	if (IsKeyPressed(KEY_ONE))		LoadLevel(1);
 	else if (IsKeyPressed(KEY_TWO))	LoadLevel(2);
 
