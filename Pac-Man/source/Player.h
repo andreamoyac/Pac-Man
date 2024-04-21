@@ -3,7 +3,7 @@
 #include "TileMap.h"
 
 //Representation model size: 32x32
-#define PLAYER_FRAME_SIZE		32
+#define PLAYER_FRAME_SIZE		16
 
 //Logical model size: 12x28
 #define PLAYER_PHYSICAL_WIDTH	12
@@ -32,17 +32,13 @@
 
 //Logic states
 enum class State { IDLE, WALKING, JUMPING, FALLING, CLIMBING, DEAD };
-enum class Look { RIGHT, LEFT };
+enum class Look { RIGHT, LEFT, UP, DOWN };
 
 //Rendering states
 enum class PlayerAnim {
-	IDLE_LEFT, IDLE_RIGHT,
-	WALKING_LEFT, WALKING_RIGHT,
-	JUMPING_LEFT, JUMPING_RIGHT,
-	LEVITATING_LEFT, LEVITATING_RIGHT,
-	FALLING_LEFT, FALLING_RIGHT,
-	CLIMBING, CLIMBING_PRE_TOP, CLIMBING_TOP,
-	SHOCK_LEFT, SHOCK_RIGHT,
+	IDLE_LEFT, IDLE_RIGHT, IDLE_UP, IDLE_DOWN,
+	WALKING_LEFT, WALKING_RIGHT, WALKING_UP, WALKING_DOWN,
+	DEATH,
 	TELEPORT_LEFT, TELEPORT_RIGHT,
 	NUM_ANIMATIONS
 };
@@ -67,11 +63,13 @@ public:
 private:
 	bool IsLookingRight() const;
 	bool IsLookingLeft() const;
+	bool IsLookingUp() const;
+	bool IsLookingDown() const;
 
 	//Player mechanics
 	void MoveX();
 	void MoveY();
-	void LogicJumping();
+	void LogicJumping(); //creo q quitar
 	void LogicClimbing();
 
 	//Animation management
@@ -80,12 +78,13 @@ private:
 	void Stop();
 	void StartWalkingLeft();
 	void StartWalkingRight();
-	void StartFalling();
-	void StartJumping();
-	void StartClimbingUp();
-	void StartClimbingDown();
+	void StartWalkingUp();
+	void StartWalkingDown();
 	void ChangeAnimRight();
 	void ChangeAnimLeft();
+	void ChangeAnimUp();
+	void ChangeAnimDown();
+	void Dead();
 
 	//Jump steps
 	bool IsAscending() const;
