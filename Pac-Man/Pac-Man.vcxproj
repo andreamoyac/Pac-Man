@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8979e5d8-3667-4189-a4eb-081f7f84cf87}</ProjectGuid>
+    <ProjectGuid>{7f9b444c-70ba-4d69-a19b-f4592818812d}</ProjectGuid>
     <RootNamespace>PacMan</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)\Proyecto1\Pac-Man\raylib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Proyecto1\Pac-Man\raylib\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -139,35 +141,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AABB.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Globals.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Object.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\RenderComponent.cpp" />
-    <ClCompile Include="src\ResourceManager.cpp" />
-    <ClCompile Include="src\Scene.cpp" />
-    <ClCompile Include="src\Sprite.cpp" />
-    <ClCompile Include="src\StaticImage.cpp" />
-    <ClCompile Include="src\TileMap.cpp" />
+    <ClCompile Include="source\AABB.cpp" />
+    <ClCompile Include="source\Entity.cpp" />
+    <ClCompile Include="source\Game.cpp" />
+    <ClCompile Include="source\Globals.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Object.cpp" />
+    <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\RenderComponent.cpp" />
+    <ClCompile Include="source\ResourceManager.cpp" />
+    <ClCompile Include="source\Scene.cpp" />
+    <ClCompile Include="source\Sprite.cpp" />
+    <ClCompile Include="source\StaticImage.cpp" />
+    <ClCompile Include="source\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\AABB.h" />
-    <ClInclude Include="src\Entity.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Globals.h" />
-    <ClInclude Include="src\MemLeaks.h" />
-    <ClInclude Include="src\Object.h" />
-    <ClInclude Include="src\Player.h" />
-    <ClInclude Include="src\Point.h" />
-    <ClInclude Include="src\RenderComponent.h" />
-    <ClInclude Include="src\ResourceManager.h" />
-    <ClInclude Include="src\Scene.h" />
-    <ClInclude Include="src\Sprite.h" />
-    <ClInclude Include="src\StaticImage.h" />
-    <ClInclude Include="src\TileMap.h" />
+    <ClInclude Include="source\AABB.h" />
+    <ClInclude Include="source\Entity.h" />
+    <ClInclude Include="source\Game.h" />
+    <ClInclude Include="source\Globals.h" />
+    <ClInclude Include="source\MemLeaks.h" />
+    <ClInclude Include="source\Object.h" />
+    <ClInclude Include="source\Player.h" />
+    <ClInclude Include="source\Point.h" />
+    <ClInclude Include="source\RenderComponent.h" />
+    <ClInclude Include="source\ResourceManager.h" />
+    <ClInclude Include="source\Scene.h" />
+    <ClInclude Include="source\Sprite.h" />
+    <ClInclude Include="source\StaticImage.h" />
+    <ClInclude Include="source\TileMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
