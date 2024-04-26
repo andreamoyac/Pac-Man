@@ -17,7 +17,7 @@
 
 
 //Logic states
-enum class State {SCATTER, CHASE, FRIGHTENED };
+enum class State { SCATTER, CHASE, FRIGHTENED };
 enum class Look { RIGHT, LEFT, UP, DOWN };
 
 //Rendering states
@@ -51,8 +51,6 @@ private:
 	//Player mechanics
 	void MoveX();
 	void MoveY();
-	void LogicJumping(); //creo q quitar
-	void LogicClimbing();
 
 	//Animation management
 	void SetAnimation(int id);

@@ -19,6 +19,9 @@
     <Filter Include="Render">
       <UniqueIdentifier>{11a2e943-413c-4f67-9a82-de8843743f09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities\Enemies">
+      <UniqueIdentifier>{48c82862-2af6-483c-b28a-223c69ec8996}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Globals.cpp">
@@ -60,8 +63,11 @@
     <ClCompile Include="source\StaticImage.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="source\Enemy.cpp">
+    <ClCompile Include="PacMan.cpp">
       <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemy.cpp">
+      <Filter>Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,8 +113,11 @@
     <ClInclude Include="source\StaticImage.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="source\Enemy.h">
+    <ClInclude Include="PacMan.h">
       <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemy.h">
+      <Filter>Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

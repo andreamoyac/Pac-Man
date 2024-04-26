@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\Entity.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="source\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PacMan.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Enemy.h" />
     <ClInclude Include="source\Entity.h" />
