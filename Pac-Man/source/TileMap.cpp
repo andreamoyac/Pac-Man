@@ -31,10 +31,10 @@ void TileMap::InitTileDictionary()
 {
 	const int n = TILE_SIZE;
 
-	dict_rect[(int)Tile::BLOCK_SQUARE1_TL] = { 0,  0, n, n };
-	dict_rect[(int)Tile::BLOCK_SQUARE1_TR] = { n,  0, n, n };
-	dict_rect[(int)Tile::BLOCK_SQUARE1_BL] = { 0, n, n, n };
-	dict_rect[(int)Tile::BLOCK_SQUARE1_BR] = { n, n, n, n };
+	dict_rect[(int)Tile::ROUND_TILE_TL] = { 0,  0, n, n };
+	dict_rect[(int)Tile::ROUND_TILE_TR] = { n,  0, n, n };
+	dict_rect[(int)Tile::ROUND_TILE_BL] = { 0, n, n, n };
+	dict_rect[(int)Tile::ROUND_TILE_BR] = { n, n, n, n };
 	dict_rect[(int)Tile::BLOCK_SQUARE2_TL] = { 2 * n,  0, n, n };
 	dict_rect[(int)Tile::BLOCK_SQUARE2_TR] = { 3 * n,  0, n, n };
 	dict_rect[(int)Tile::BLOCK_SQUARE2_BL] = { 2 * n, n, n, n };
