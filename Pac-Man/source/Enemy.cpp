@@ -39,24 +39,24 @@ AppStatus Enemy::Initialise()
 	sprite->SetAnimationDelay((int)EnemyAnim::EYES_UP, ANIM_DELAY);
 	sprite->AddKeyFrame((int)EnemyAnim::EYES_UP, { 0, 4, n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::EYES_DOWN, ANIM_DELAY);
-	sprite->AddKeyFrame((int)EnemyAnim::EYES_DOWN, { 0, 0, n, n });
+	sprite->AddKeyFrame((int)EnemyAnim::EYES_DOWN, { 0, 1, n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::EYES_LEFT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)EnemyAnim::EYES_LEFT, { 0, 0, -n, n });
+	sprite->AddKeyFrame((int)EnemyAnim::EYES_LEFT, { 0, 2, -n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::EYES_RIGHT, ANIM_DELAY);
-	sprite->AddKeyFrame((int)EnemyAnim::EYES_RIGHT, { 0, 0, -n, n });
+	sprite->AddKeyFrame((int)EnemyAnim::EYES_RIGHT, { 0, 3, -n, n });
 
 	sprite->SetAnimationDelay((int)EnemyAnim::WALKING_RIGHT, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
 		sprite->AddKeyFrame((int)EnemyAnim::WALKING_RIGHT, { (float)i * n, 4 * n, n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::WALKING_LEFT, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)EnemyAnim::WALKING_LEFT, { (float)i * n, 4 * n, -n, n });
+		sprite->AddKeyFrame((int)EnemyAnim::WALKING_LEFT, { (float)i * n, 1 * n, -n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::WALKING_UP, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)EnemyAnim::WALKING_UP, { (float)i * n, 4 * n, -n, n });
+		sprite->AddKeyFrame((int)EnemyAnim::WALKING_UP, { (float)i * n, 2 * n, -n, n });
 	sprite->SetAnimationDelay((int)EnemyAnim::WALKING_DOWN, ANIM_DELAY);
 	for (i = 0; i < 8; ++i)
-		sprite->AddKeyFrame((int)EnemyAnim::WALKING_DOWN, { (float)i * n, 4 * n, -n, n });
+		sprite->AddKeyFrame((int)EnemyAnim::WALKING_DOWN, { (float)i * n, 3 * n, -n, n });
 
 
 

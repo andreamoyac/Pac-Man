@@ -54,13 +54,13 @@ void Sprite::SetAutomaticMode()
 }
 void Sprite::Update()
 {
-    //Both animation modes (automatic and manual) are carry out with animation delay
-    if (current_delay > 0)
+   // both animation modes (automatic and manual) are carry out with animation delay
+    if (current_delay >= 0)
     {
         current_delay--;
         if (current_delay == 0)
         {
-            //Only automatic animation mode advances next frame
+            //only automatic animation mode advances next frame
             if (mode == AnimMode::AUTOMATIC)
             {
                 current_frame++;

@@ -6,8 +6,8 @@
 TileMap::TileMap()
 {
 	map = nullptr;
-	width = 0;
-	height = 0;
+	width =0;
+	height =0;
 	laser = nullptr;
 	img_tiles = nullptr;
 
@@ -37,8 +37,8 @@ void TileMap::InitTileDictionary()
 	dict_rect[(int)Tile::DOUBLE_STRAIGHT_LINE_VERTICAL_RIGHT] = { 2 * n, 24*n, n, n };
 	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_TL] = {  n,  24*n, n, n };
 	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_TR] = { 0,  24*n, n, n };
-	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_BL] = { 4 * n, 24*n, n, n };
-	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_BR] = { 3 * n, 24*n, n, n };
+	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_BL] = { 5*n, 24*n, n, n };
+	dict_rect[(int)Tile::DOUBLE_ROUND_TILE_BR] = { 4* n, 24*n, n, n };
 	dict_rect[(int)Tile::DOUBLE_LINE_UP_ROUND_TILE_TL] = { 6 * n,  26*n, n, n };
 	dict_rect[(int)Tile::DOUBLE_LINE_UP_ROUND_TILE_TR] = { 7 * n, 26*n, n, n };
 	dict_rect[(int)Tile::DOUBLE_LINE_RIGHT_ROUND_TILE_BR] = { 6 * n, 24*n, n, n };
@@ -83,7 +83,7 @@ AppStatus TileMap::Initialise()
 	}
 	img_tiles = data.GetTexture(Resource::IMG_TILES);
 
-	/*laser = new Sprite(img_tiles);
+	laser = new Sprite(img_tiles);
 	if (laser == nullptr)
 	{
 		LOG("Failed to allocate memory for laser sprite");
@@ -91,10 +91,10 @@ AppStatus TileMap::Initialise()
 	}
 	laser->SetNumberAnimations(1);
 	laser->SetAnimationDelay(0, ANIM_DELAY);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::LASER_FRAME0]);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::LASER_FRAME1]);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::LASER_FRAME2]);
-	laser->SetAnimation(0);*/
+	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BL]);
+	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BR]);
+	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_TR]);
+	laser->SetAnimation(0);
 
 	return AppStatus::OK;
 }
@@ -274,12 +274,9 @@ void TileMap::Render()
 				pos.x = (float)j * TILE_SIZE;
 				pos.y = (float)i * TILE_SIZE;
 
-				/*if (tile != Tile::LASER)
-				{
 					rc = dict_rect[(int)tile];
 					DrawTextureRec(*img_tiles, rc, pos, WHITE);
-				}
-				else
+				/*else
 				{
 					laser->Draw((int)pos.x, (int)pos.y);
 				}*/
@@ -292,7 +289,7 @@ void TileMap::Release()
 	ResourceManager& data = ResourceManager::Instance(); 
 	data.ReleaseTexture(Resource::IMG_TILES);
 
-	laser->Release();
+	//laser->Release();
 
 	dict_rect.clear();
 }
