@@ -48,9 +48,6 @@ private:
 	bool IsLookingUp() const;
 	bool IsLookingDown() const;
 
-	//Player mechanics
-	void MoveX();
-	void MoveY();
 
 	//Animation management
 	void SetAnimation(int id);

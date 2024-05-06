@@ -8,7 +8,8 @@ TileMap::TileMap()
 	map = nullptr;
 	width =0;
 	height =0;
-	laser = nullptr;
+	lifes = nullptr;
+	fruits = nullptr;
 	img_tiles = nullptr;
 
 	InitTileDictionary();
@@ -20,11 +21,17 @@ TileMap::~TileMap()
 		delete[] map;
 		map = nullptr;
 	}
-	if (laser != nullptr)
+	if (fruits != nullptr)
 	{
-		laser->Release();
-		delete laser;
-		laser = nullptr;
+		fruits->Release();
+		delete fruits;
+		fruits = nullptr;
+	}
+	if (lifes != nullptr)
+	{
+		lifes->Release();
+		delete lifes;
+		lifes = nullptr;
 	}
 }
 void TileMap::InitTileDictionary()
@@ -56,10 +63,14 @@ void TileMap::InitTileDictionary()
 	dict_rect[(int)Tile::STRAIGHT_LINE_HORIZONTAL_DOWN] = { 11 * n, 24 * n, n, n };
 	dict_rect[(int)Tile::STRAIGHT_LINE_VERTICAL_RIGHT] = { 9 * n, 25 * n, n, n };
 	dict_rect[(int)Tile::STRAIGHT_LINE_VERTICAL_LEFT] = { 8 * n, 25 * n, n, n };
-	dict_rect[(int)Tile::SINGLE_ROUND_TILE_TL] = { 2 * n, 26 * n, n, n };
-	dict_rect[(int)Tile::SINGLE_ROUND_TILE_TR] = { 3 * n, 26 * n, n, n };
-	dict_rect[(int)Tile::SINGLE_ROUND_TILE_BL] = { 4 * n, 26 * n, n, n };
-	dict_rect[(int)Tile::SINGLE_ROUND_TILE_BR] = { 5 * n, 26 * n, n, n };
+	dict_rect[(int)Tile::SINGLE_ROUND_TILE_TL] = { 4 * n, 25 * n, n, n };
+	dict_rect[(int)Tile::SINGLE_ROUND_TILE_TR] = { 5 * n, 25 * n, n, n };
+	dict_rect[(int)Tile::SINGLE_ROUND_TILE_BL] = { 6 * n, 25 * n, n, n };
+	dict_rect[(int)Tile::SINGLE_ROUND_TILE_BR] = { 7 * n, 25 * n, n, n };
+	dict_rect[(int)Tile::BIG_ROUND_TILE_TL] = { 2 * n, 26 * n, n, n };
+	dict_rect[(int)Tile::BIG_ROUND_TILE_TR] = { 3 * n, 26 * n, n, n };
+	dict_rect[(int)Tile::BIG_ROUND_TILE_BL] = { 4 * n, 26 * n, n, n };
+	dict_rect[(int)Tile::BIG_ROUND_TILE_BR] = { 5 * n, 26 * n, n, n };
 
 	dict_rect[(int)Tile::SQUARE_TILE_TL] = { 10*n, 25 * n, n, n };
 	dict_rect[(int)Tile::SQUARE_TILE_TR] = { 11 * n, 25 * n, n, n };
@@ -72,6 +83,9 @@ void TileMap::InitTileDictionary()
 	dict_rect[(int)Tile::ENERGIZER] = { 12 * n, 26 * n, n, n };
 	dict_rect[(int)Tile::CHERRY] = { 23 * n, 24 * n, n, n }; //DIRIA
 
+	dict_rect[(int)Tile::CURRENT_FRUITS] = { 12 * n, 26 * n, n, n };
+	dict_rect[(int)Tile::CURRENT_LIFES] = { 12 * n, 26 * n, n, n };
+
 }
 AppStatus TileMap::Initialise()
 {
@@ -83,21 +97,37 @@ AppStatus TileMap::Initialise()
 	}
 	img_tiles = data.GetTexture(Resource::IMG_TILES);
 
-	laser = new Sprite(img_tiles);
-	if (laser == nullptr)
+	fruits = new Sprite(img_tiles);
+	if (fruits == nullptr)
 	{
 		LOG("Failed to allocate memory for laser sprite");
 		return AppStatus::ERROR;
 	}
-	laser->SetNumberAnimations(1);
-	laser->SetAnimationDelay(0, ANIM_DELAY);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BL]);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BR]);
-	laser->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_TR]);
-	laser->SetAnimation(0);
+	fruits->SetNumberAnimations(1);
+	fruits->SetAnimationDelay(0, ANIM_DELAY);
+	fruits->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BL]);
+	fruits->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BR]);
+	fruits->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_TR]);
+	fruits->SetAnimation(0);
+
+	return AppStatus::OK;
+	
+	lifes = new Sprite(img_tiles);
+	if (lifes == nullptr)
+	{
+		LOG("Failed to allocate memory for laser sprite");
+		return AppStatus::ERROR;
+	}
+	lifes->SetNumberAnimations(1);
+	lifes->SetAnimationDelay(0, ANIM_DELAY);
+	lifes->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BL]);
+	lifes->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_BR]);
+	lifes->AddKeyFrame(0, dict_rect[(int)Tile::SQUARE_TILE_TR]);
+	lifes->SetAnimation(0);
 
 	return AppStatus::OK;
 }
+
 AppStatus TileMap::Load(int data[], int w, int h)
 {
 	size = w*h;
@@ -118,7 +148,10 @@ AppStatus TileMap::Load(int data[], int w, int h)
 }
 void TileMap::Update()
 {
-	laser->Update();
+	/*if(DIE)
+	lifes->Update();
+	if(fruit)
+	fruits->Update();*/
 }
 Tile TileMap::GetTileIndex(int x, int y) const
 {

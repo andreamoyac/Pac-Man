@@ -32,10 +32,14 @@ enum class Tile {
 	
 	PINK_RECTANGLE_DOOR,
 
-	// 50 <= id < 100: special tiles
+	// 50 <= id < 80: special tiles
 	PELLET = 50,
 	ENERGIZER = 60,
 	CHERRY = 70,
+
+	// 80 <= id < 100: LIFES AND EXTRAS
+	CURRENT_FRUITS=80,
+	CURRENT_LIFES,
 
 	// id >= 100: entities' initial locations
 	PACMAN = 100,
@@ -88,7 +92,8 @@ private:
 	//Dictionary of tile frames
 	std::unordered_map<int, Rectangle> dict_rect;
 
-	Sprite *laser;
+	Sprite *fruits;
+	Sprite* lifes;
 	
 	//Tile sheet
 	const Texture2D *img_tiles;

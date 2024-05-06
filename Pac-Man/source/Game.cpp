@@ -65,7 +65,7 @@ AppStatus Game::LoadResources()
     {
         return AppStatus::ERROR;
     }
-    maze_img = data.GetTexture(Resource::IMG_MENU);
+    img_menu = data.GetTexture(Resource::IMG_MENU);
     if (data.LoadTexture(Resource::MAZE_IMG, "images/Pac-Man.png") != AppStatus::OK)
     {
         return AppStatus::ERROR;
@@ -136,12 +136,12 @@ void Game::Render()
     switch (state)
     {
         case GameState::MAIN_MENU:
-            DrawTexture(*img_menu, 0, 0, WHITE);
+            DrawTextureEx(*img_menu, Vector2() , 0, 2, WHITE);
             break;
 
         case GameState::PLAYING:
             scene->Render();
-            DrawTexture(*maze_img, 0, 0, WHITE);
+            DrawTextureEx(*maze_img, Vector2(), 0, 2, { 255,255,255,150 });
             break;
     }
     

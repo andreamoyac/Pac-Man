@@ -162,101 +162,20 @@ void Enemy::ChangeAnimDown()
 }
 void Enemy::Update()
 {
-	//Player doesn't use the "Entity::Update() { pos += dir; }" default behaviour.
-	//Instead, uses an independent behaviour for each axis.
-	MoveX();
-	MoveY();
+
 
 	Sprite* sprite = dynamic_cast<Sprite*>(render);
 	sprite->Update();
 }
-void Enemy::MoveX()
-{
-	AABB box;
-	int prev_x = pos.x;
 
 
-	if (IsKeyDown(KEY_LEFT) && !IsKeyDown(KEY_RIGHT))
-	{
-		pos.x += -ENEMY_SPEED;
-		if (state == State::SCATTER) StartWalkingLeft();
-		else
-		{
-			if (IsLookingRight()) ChangeAnimLeft();
-		}
-
-		box = GetHitbox();
-		if (map->TestCollisionWallLeft(box))
-		{
-			pos.x = prev_x;
-			if (state == State::CHASE) Stop();
-		}
-	}
-	else if (IsKeyDown(KEY_RIGHT))
-	{
-		pos.x += ENEMY_SPEED;
-		if (state == State::SCATTER) StartWalkingRight();
-		else
-		{
-			if (IsLookingLeft()) ChangeAnimRight();
-		}
-
-		box = GetHitbox();
-		if (map->TestCollisionWallRight(box))
-		{
-			pos.x = prev_x;
-			if (state == State::CHASE) Stop();
-		}
-	}
-	else
-	{
-		if (state == State::CHASE) Stop();
-	}
-}
-void Enemy::MoveY()
-{
-	AABB box;
-	int prev_y = pos.y;
-
-
-	if (IsKeyDown(KEY_UP) && !IsKeyDown(KEY_DOWN))
-	{
-		pos.y += ENEMY_SPEED;
-		if (state == State::SCATTER) StartWalkingUp();
-		else
-		{
-			if (IsLookingDown()) ChangeAnimUp();
-		}
-
-		box = GetHitbox();
-		if (map->TestCollisionWallLeft(box))
-		{
-			pos.y = prev_y;
-			if (state == State::CHASE) Stop();
-		}
-	}
-	else if (IsKeyDown(KEY_DOWN))
-	{
-		pos.x += -ENEMY_SPEED;
-		if (state == State::SCATTER) StartWalkingDown();
-		else
-		{
-			if (IsLookingUp()) ChangeAnimDown();
-		}
-
-		box = GetHitbox();
+	/*	box = GetHitbox();
 		if (map->TestCollisionWallRight(box))
 		{
 			pos.y = prev_y;
 			if (state == State::CHASE) Stop();
-		}
-	}
-	else
-	{
-		if (state == State::CHASE) Stop();
-	}
+		}*/
 
-}
 
 void Enemy::DrawDebug(const Color& col) const
 {
