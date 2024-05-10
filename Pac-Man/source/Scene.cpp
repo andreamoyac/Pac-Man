@@ -274,8 +274,8 @@ AppStatus Scene::LoadLevel(int stage)
 			}
 			else if (tile == Tile::PACMAN)
 			{
-				pos.x = x * TILE_SIZE;
-				pos.y = y * TILE_SIZE + TILE_SIZE - 1;
+				pos.x = x * TILE_SIZE ;  //otra parte en GetRenderingPosition() en entity.cpp
+				pos.y = y * TILE_SIZE +TILE_SIZE;
 				player->SetPos(pos);
 				map[i] = 0;
 			}

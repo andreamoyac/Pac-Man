@@ -33,6 +33,7 @@ public:
     void Draw(int x, int y) const override;
     void DrawTint(int x, int y, const Color& col) const override;
 
+
     void Release() override;
 
 private:

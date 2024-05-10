@@ -27,19 +27,20 @@ void Entity::Update()
 }
 AABB Entity::GetHitbox() const
 {
-	Point p(pos.x, pos.y - (height - 1));
+	Point p(pos.x, pos.y);
 	AABB hitbox(p, width, height);
 	return hitbox;
 }
 Point Entity::GetRenderingPosition() const
 {
 	Point p;
-	p.x = pos.x + width / 2 - frame_width / 2;
-	p.y = pos.y - (frame_height-1);
+	p.x = pos.x - frame_width;
+	p.y = pos.y - frame_height-TILE_SIZE/2;
 	return p;
 }
 void Entity::Draw() const
 {
+
 	Point p = GetRenderingPosition();
 	render->Draw(p.x, p.y);
 }
