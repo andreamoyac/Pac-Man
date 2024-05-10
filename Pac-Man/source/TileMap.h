@@ -74,6 +74,8 @@ public:
 	bool TestCollisionWallUp(const AABB& box) const;
 	bool TestCollisionWallDown(const AABB& box) const;
 	
+	//When debug mode we want to see the grid lines
+	void RenderGrid() const;
 
 private:
 	void InitTileDictionary();

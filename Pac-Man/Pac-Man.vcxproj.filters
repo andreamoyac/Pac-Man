@@ -63,19 +63,16 @@
     <ClCompile Include="source\StaticImage.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="PacMan.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
     <ClCompile Include="source\Enemy.cpp">
       <Filter>Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Red.cpp">
+    <ClCompile Include="source\Orange.cpp">
       <Filter>Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Pink.cpp">
+    <ClCompile Include="source\Pink.cpp">
       <Filter>Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Orange.cpp">
+    <ClCompile Include="source\Red.cpp">
       <Filter>Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,9 +118,6 @@
     </ClInclude>
     <ClInclude Include="source\StaticImage.h">
       <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="PacMan.h">
-      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="source\Enemy.h">
       <Filter>Entities\Enemies</Filter>

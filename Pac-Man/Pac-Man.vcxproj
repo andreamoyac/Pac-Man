@@ -146,10 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Orange.cpp" />
-    <ClCompile Include="PacMan.cpp" />
-    <ClCompile Include="Pink.cpp" />
-    <ClCompile Include="Red.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\Entity.cpp" />
@@ -157,7 +153,10 @@
     <ClCompile Include="source\Globals.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Object.cpp" />
+    <ClCompile Include="source\Orange.cpp" />
+    <ClCompile Include="source\Pink.cpp" />
     <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\Red.cpp" />
     <ClCompile Include="source\RenderComponent.cpp" />
     <ClCompile Include="source\ResourceManager.cpp" />
     <ClCompile Include="source\Scene.cpp" />
@@ -166,7 +165,6 @@
     <ClCompile Include="source\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PacMan.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Enemy.h" />
     <ClInclude Include="source\Entity.h" />

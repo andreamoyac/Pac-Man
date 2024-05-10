@@ -317,6 +317,17 @@ void TileMap::Render()
 		}
 	}
 }
+void TileMap::RenderGrid() const
+{
+	for (int i = 0; i < height; i++)
+	{
+		DrawLine(0,i*TILE_SIZE, WINDOW_WIDTH,i*TILE_SIZE,YELLOW);
+	}
+	for (int j = 0; j < width; j++)
+	{
+		DrawLine(j*TILE_SIZE, 0, j*TILE_SIZE, WINDOW_HEIGHT, YELLOW);
+	}
+}
 void TileMap::Release()
 {
 	ResourceManager& data = ResourceManager::Instance(); 
